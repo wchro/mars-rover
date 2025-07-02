@@ -46,14 +46,21 @@ class Rover
                     ];
                 }
                 // b. mover
-            } else if ($command === 'R') {
-                // RIGHT
-            } else if ($command === 'L') {
-                // LEFT
+                $this->move_forward();
+            } elseif ($command === 'R') {
+                $this->turn_right();
+            } elseif ($command === 'L') {
+                $this->turn_left();
             }
         }
 
-        return [];
+        return [
+            'x' => $this->x,
+            'y' => $this->y,
+            'direction' => $this->direction,
+            'obstacle' => false,
+            'message' => 'Movement completed successfully ✅'
+        ];
     }
 
     private function can_move_forward()
@@ -66,7 +73,7 @@ class Rover
             case 'N': $next_y++; break;
             case 'S': $next_y--; break;
             case 'E': $next_x++; break;
-            case 'W': $next_x++; break;
+            case 'W': $next_x--; break;
         }
 
         // comprobar si existe obstaculo
@@ -79,11 +86,27 @@ class Rover
         return true;
     }
 
-    private function move_forward() {}
+    private function move_forward()
+    {
+        switch ($this->direction) {
+            case 'N': $this->y++; break;
+            case 'S': $this->y--; break;
+            case 'E': $this->x++; break;
+            case 'W': $this->x--; break;
+        }
+    }
 
-    private function turn_right() {}
+    private function turn_right()
+    {
+       $directions = ['N' => 'E', 'E' => 'S', 'S' => 'W', 'W' => 'N'];
+       $this->direction = $directions[$this->direction];
+    }
 
-    private function turn_left() {}
+    private function turn_left()
+    {
+        $directions = ['N' => 'W', 'W' => 'S', 'S' => 'E', 'E' => 'N'];
+        $this->direction = $directions[$this->direction];
+    }
 
 
 }
