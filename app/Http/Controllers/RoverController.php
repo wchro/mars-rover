@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Rover;
 
 class RoverController extends Controller
 {
@@ -14,7 +15,10 @@ class RoverController extends Controller
             'commands'  => 'required|string'
         ]);
 
+        $rover = new Rover($data['x'], $data['y'], $data['direction']);
+        $result = $rover->move($data['commands']);
+
         // respuesta de ejemplo
-        return response()->json(['info' => $data]);
+        return response()->json($result);
     }
 }
