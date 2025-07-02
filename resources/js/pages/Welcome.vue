@@ -64,7 +64,13 @@ const sendCommands = async () => {
 </template>
 
 <style scoped>
-input {
-    width: 60px;
+input,
+button {
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    font-size: 1rem;
 }
 </style>
