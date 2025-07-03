@@ -13,21 +13,29 @@ Proyecto para una prueba técnica: simulador de movimientos de un rover en Marte
 
 ## 🚀 Cómo usarlo
 
-### 1. Instalar dependencias
+### Docker
+
+```bash
+docker compose up -d
+```
+
+### Manual
+
+#### 1. Instalar dependencias
 
 ```bash
 composer install
 npm install
 ```
 
-### 2. Arrancar servidor
+#### 2. Arrancar servidor
 
 ```bash
 php artisan serve
 npm run dev
 ```
 
-### 3. Usar la app
+### Usar la app
 
 - Abre en navegador `http://localhost:8000`
 - Introduce posición inicial (x, y), dirección y comandos (ejemplo: `FFRFFL`)
